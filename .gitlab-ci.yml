@@ -15,7 +15,7 @@ stages:
 composer:
   stage: install
   script:
-    - $PHP composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - $PHP /home/gitlab-runner/.local/share/composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
   tags:
     - bash
 
