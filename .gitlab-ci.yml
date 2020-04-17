@@ -12,7 +12,7 @@ stages:
 composer:
   stage: install
   script:
-    - php7.4 /home/gitlab-runner/.local/share/composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - php7.4 /usr/bin/composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
   tags:
     - bash
 
