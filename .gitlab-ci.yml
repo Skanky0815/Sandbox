@@ -13,6 +13,8 @@ prepend:
   stage: install
   script:
     - mkdir ./reports
+  tags:
+    - bash
 
 composer:
   stage: install
