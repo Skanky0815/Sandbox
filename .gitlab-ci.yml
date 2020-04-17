@@ -12,7 +12,7 @@ stages:
 prepend:
   stage: install
   script:
-    - mkdir ./reports
+    - mkdir -p ./reports
   tags:
     - bash
 
@@ -95,7 +95,6 @@ pages:
   script:
     - mkdir public
     - cp reports/* public/
-    - rm -R ./reports
   artifacts:
     paths:
       - public
