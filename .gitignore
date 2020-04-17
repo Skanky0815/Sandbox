@@ -2,3 +2,4 @@
 /reports
 /vendor
 .phpunit.result.cache
+.phplint-cache

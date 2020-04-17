@@ -1,0 +1,101 @@
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - vendor/
+    - reports/
+
+variables:
+  PHP: php7.4
+
+stages:
+  - install
+  - test
+  - cleanup
+
+composer:
+  stage: install
+  script:
+    - $PHP composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+  tags:
+    - bash
+
+lint:
+  stage: test
+  script:
+    - $PHP composer php-lint
+  dependencies:
+    - composer
+  artifacts:
+    when: always
+    reports:
+      junit: reports/lint.xml
+  tags:
+    - bash
+
+codestyle:
+  stage: test
+  script:
+    - $PHP composer php-cs
+  dependencies:
+    - composer
+  artifacts:
+    when: always
+    reports:
+      junit: reports/checkstyle.xml
+  tags:
+    - bash
+
+codequality:
+  stage: test
+  script:
+    - $PHP composer php-md
+  dependencies:
+    - composer
+  artifacts:
+    when: always
+    paths:
+      - reports
+  tags:
+    - bash
+
+phpunit:
+  stage: test
+  script:
+    - $PHP composer php-unit
+  dependencies:
+    - composer
+  artifacts:
+    paths:
+      - reports
+    reports:
+      junit: reports/junit.xml
+  tags:
+    - bash
+
+featurestest:
+  stage: test
+  script:
+    - $PHP composer behat
+  dependencies:
+    - composer
+  artifacts:
+    paths:
+      - reports
+    reports:
+      junit: reports/features/default.xml
+  tags:
+    - bash
+
+pages:
+  stage: cleanup
+  script:
+    - mkdir public
+    - cp ci/pages/index.html public/
+    - cp reports/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+  tags:
+    - bash

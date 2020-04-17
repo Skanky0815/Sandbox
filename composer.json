@@ -16,7 +16,8 @@
         "phpunit/phpunit": "^8",
         "phpmd/phpmd": "^2.8",
         "squizlabs/php_codesniffer": "^3.5",
-        "behat/behat": "^3.6"
+        "behat/behat": "^3.6",
+        "overtrue/phplint": "^1.2"
     },
     "autoload": {
         "psr-4": {
@@ -29,9 +30,10 @@
         }
     },
     "scripts": {
-        "phpcs": "phpcs -p --standard=PSR12 ./app",
-        "phpunit": "phpunit --configuration phpunit.xml",
-        "phpmd": "phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt",
-        "behat": "behat"
+        "php-cs": "phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app",
+        "php-unit": "phpunit --configuration phpunit.xml --colors=never --coverage-text",
+        "php-md": "phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt",
+        "behat": "behat -f junit --out reports/features",
+        "php-lint": "phplint ./app --xml=reports/lint.xml"
     }
 }
