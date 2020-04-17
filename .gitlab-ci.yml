@@ -22,7 +22,7 @@ composer:
 lint:
   stage: test
   script:
-    - $PHP composer php-lint
+    - $PHP vendor/bin/phplint ./app --xml=reports/lint.xml
   dependencies:
     - composer
   artifacts:
@@ -35,7 +35,7 @@ lint:
 codestyle:
   stage: test
   script:
-    - $PHP composer php-cs
+    - $PHP vendor/bin/phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app
   dependencies:
     - composer
   artifacts:
@@ -48,7 +48,7 @@ codestyle:
 codequality:
   stage: test
   script:
-    - $PHP composer php-md
+    - $PHP vendor/bin/phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt
   dependencies:
     - composer
   artifacts:
@@ -61,7 +61,7 @@ codequality:
 phpunit:
   stage: test
   script:
-    - $PHP composer php-unit
+    - $PHP vendor/bin/phpunit --configuration phpunit.xml --colors=never --coverage-text
   dependencies:
     - composer
   artifacts:
@@ -75,7 +75,7 @@ phpunit:
 featurestest:
   stage: test
   script:
-    - $PHP composer behat
+    - $PHP vendor/bin/behat -f junit --out reports/features
   dependencies:
     - composer
   artifacts:
