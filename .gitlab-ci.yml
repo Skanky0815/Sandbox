@@ -94,7 +94,7 @@ pages:
   stage: cleanup
   script:
     - mkdir public
-    - cp reports/* public/
+    - cp -r reports/* public/
   artifacts:
     paths:
       - public
