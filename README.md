@@ -5,27 +5,15 @@
 [![coverage report](https://gitlab.dc2.wizmo.cloud/rschulz/sandbox/badges/master/coverage.svg)](https://gitlab.dc2.wizmo.cloud/rschulz/sandbox/-/commits/master)
 
 Die ist ein kleines Sandbox-Projekt zum herumspielen mit Testing Frameworks. Neben den Testing Frameworks geht es auch 
-um die Codequalität im Projekt und die entwicklungsmethoden TDD und BDD. 
+um die Codequalität im Projekt und die Entwicklungsmethoden TDD und BDD. 
 
-- [1. Automatisiertes Testen](#1.-Automatisiertes-Testen)
-    - [UnitTests](#UnitTests)
-    - [Feature Tests](#Feature Tests)
-    - [Integration Tests](#Integration Tests)
-- [2. Testmethoden](#2.-Testmethoden)
-    - [Anti-Pattern](#Anti-Pattern)
-    - [Test Driven Development (TDD)](#Test-Driven-Development-(TDD))
-    - [Behavior Driven Development (BDD)](#Behavior-Driven-Development-(BDD))
-- [3. Code Qualität](#3.-Code-Qualität)
-- [3. Software Design](#3.-Software-Design)
-    - [Design Patterns](#Design-Patterns)
-- [4. Setup phpStorm](#4.-Setup-phpStorm)
-- [5. Tool Liste](#5.-Tool-Liste)
+[[_TOC_]]
 
 ## 1. Automatisiertes Testen
 > Jeder Test ist besser als kein Test!
 
-Wenn man anfängt das Programmieren zu lernen, lernt man viel mit __try and error__. Mit der Zeit wird man aber besser
-doch meistens bleibt die Methodik __try and error__ erhalten. Man schreibt Code, geht in den Browser und testet ob das 
+Wenn man anfängt das Programmieren zu lernen, lernt man viel mit _try and error_. Mit der Zeit wird man aber besser
+doch meistens bleibt die Methodik _try and error_ erhalten. Man schreibt Code, geht in den Browser und testet ob das 
 implementierte funktioniert. Am Anfang geht es noch recht schnell, wird die Applikation aber größer, dann nimmt auch die
 Zeit, welche man zum manuellen Testen braucht immer mehr zu.
 
@@ -41,8 +29,8 @@ folgende TestCases:
 | - | ... | - | ... | ... | 
  
 Was wäre ein konkreter TestCase?
-Ein __Gast__ hat __1 Produkt__ und ein __Gutschein__ im Warenkorb. Die __Rechnungsadresse ist gleich der Lieferadresse__ 
-und Versand wird die Bestellung via __DHL__. Bezahlt wird mit __PayPal__.
+Ein _Gast_ hat _1 Produkt_ und ein _Gutschein_ im Warenkorb. Die _Rechnungsadresse ist gleich der Lieferadresse_
+und Versand wird die Bestellung via _DHL_. Bezahlt wird mit _PayPal_.
 
 Jetzt kann man überlegen, wie viele TestCases ein Checkout hat und wie lange es dauert, bis man alle Varianten durchgetestet
 hat (eventuell zurücksetzten der Datenbank, Produkte auswählen, usw). 
@@ -67,7 +55,7 @@ Automatisierte Tests werden einmal implementiert / konfiguriert und können imme
 
 ### UnitTests
 Ein UnitTest test immer nur eine Unit(Einheit/Module). In PHP würde man für eine Klasse eine TestKlasse erstellen und 
-dort für jede __public function__ mindestens eine test Methode implementieren.    
+dort für jede _public function_ mindestens eine test Methode implementieren.    
 Bei UnitTests ist darauf zu achten, das man auch wirklich nur die Unit testet, dazu muss immer eine feste Umgebung erschaffen
 werden. Das heißt Zeit, globale Variablen, die Datenbank usw. müssen bei jedem Testdurchlauf gleich sein. 
 
@@ -75,19 +63,19 @@ UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
 
 **Best Practice**: 
 - man teste immer nur die nach außen sichtbaren methoden (public API)
-    __(private Methoden/Funktionen werden eh in public aufgerufen)__
+    _(private Methoden/Funktionen werden eh in public aufgerufen)_
 - alle Abhängigkeiten sollten gemockt werden
-    __(ermöglicht das Steuern welche Parameter und Return Werte der Mock erhält und liefert)__
+    _(ermöglicht das Steuern welche Parameter und Return Werte der Mock erhält und liefert)_
 - UnitTests müssen in einer isolierten Umgebung laufen und dürfen sich nicht beeinflussen 
-    __(für jeden Test muss die Umgebung zurückgesetzt werden)__
+    _(für jeden Test muss die Umgebung zurückgesetzt werden)_
 - möglichst nur ein assert je test Methode
-    __(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)__
+    _(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)_
 - der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: fooShouldReturnTheStringBarSuccessfully
-    __(für den Dokumentationsaspekt)__
+    _(für den Dokumentationsaspekt)_
 - Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
-    __(erhöht die Nachvollziehbarkeit der Tests)__
+    _(erhöht die Nachvollziehbarkeit der Tests)_
 - eine test sollte nicht länger als eine Sekunde dauern
-    __(das Ausführen der Tests sollen die Entwicklung nicht behindern)__
+    _(das Ausführen der Tests sollen die Entwicklung nicht behindern)_
 
 #### Mocking
 Bei einem Mock wird eine Abhängigkeit, zum Beispiel eine Klasse ganz oder teilweise durch eine Fake Klasse ersetzt, 
@@ -101,15 +89,15 @@ Das heißt, hier wird gegen das gesamte System getestet.
 
 **Best Practice**: 
 - man teste immer nur die nach außen sichtbaren methoden (public API)
-    __(private Methoden/Funktionen werden eh in public aufgerufen)__
+    _(private Methoden/Funktionen werden eh in public aufgerufen)_
 - die Tests müssen in einer isolierten Umgebung laufen und dürfen sich nicht beeinflussen 
-    __(für jeden Test muss die Umgebung zurückgesetzt werden)__
+    _(für jeden Test muss die Umgebung zurückgesetzt werden)_
 - möglichst nur ein assert je test Methode
-    __(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)__
+    _(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)_
 - der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: createUserShouldCreateANewUserInTheDatabaseSuccessfully
-    __(für den Dokumentationsaspekt)__
+    _(für den Dokumentationsaspekt)_
 - Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
-    __(erhöht die Nachvollziehbarkeit der Tests)__
+    _(erhöht die Nachvollziehbarkeit der Tests)_
 
 ### Integration Tests
 Integration Tests testen das gesamt system, von der GUI über den PHP Process bis zu Datenbank. Hierfür werden konkrete User
@@ -118,11 +106,11 @@ Storys vorgegeben, welche beschreiben was in der GUI geklickt wird und wie die A
 **Best Practice**: 
 - Integration Tests sind im ideal fall konkrete User Storys 
 - die Tests müssen in einer isolierten Umgebung laufen und dürfen sich nicht beeinflussen 
-    __(für jeden Test muss die Umgebung zurückgesetzt werden)__
+    _(für jeden Test muss die Umgebung zurückgesetzt werden)_
 - der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: createUserShouldCreateANewUserInTheDatabaseSuccessfully
-    __(für den Dokumentationsaspekt)__
+    _(für den Dokumentationsaspekt)_
 - Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
-    __(erhöht die Nachvollziehbarkeit der Tests)__
+    _(erhöht die Nachvollziehbarkeit der Tests)_
     
 ## 2. Testmethoden
 
@@ -133,7 +121,7 @@ Storys vorgegeben, welche beschreiben was in der GUI geklickt wird und wie die A
 
 ### Test Driven Development (TDD)
 
-Red -> Green -> Refactor
+ [-Red-] -> [+Green+] -> Refactor
 
 ### Behavior Driven Development (BDD)
 
