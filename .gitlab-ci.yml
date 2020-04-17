@@ -4,9 +4,6 @@ cache:
     - vendor/
     - reports/
 
-variables:
-  PHP: php7.4
-
 stages:
   - install
   - test
@@ -15,14 +12,14 @@ stages:
 composer:
   stage: install
   script:
-    - $PHP /home/gitlab-runner/.local/share/composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - php7.4 /home/gitlab-runner/.local/share/composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
   tags:
     - bash
 
 lint:
   stage: test
   script:
-    - $PHP vendor/bin/phplint ./app --xml=reports/lint.xml
+    - php7.4 vendor/bin/phplint ./app --xml=reports/lint.xml
   dependencies:
     - composer
   artifacts:
@@ -35,7 +32,7 @@ lint:
 codestyle:
   stage: test
   script:
-    - $PHP vendor/bin/phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app
+    - php7.4 vendor/bin/phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app
   dependencies:
     - composer
   artifacts:
@@ -48,7 +45,7 @@ codestyle:
 codequality:
   stage: test
   script:
-    - $PHP vendor/bin/phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt
+    - php7.4 vendor/bin/phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt
   dependencies:
     - composer
   artifacts:
@@ -61,7 +58,7 @@ codequality:
 phpunit:
   stage: test
   script:
-    - $PHP vendor/bin/phpunit --configuration phpunit.xml --colors=never --coverage-text
+    - php7.4 vendor/bin/phpunit --configuration phpunit.xml --colors=never --coverage-text
   dependencies:
     - composer
   artifacts:
@@ -75,7 +72,7 @@ phpunit:
 featurestest:
   stage: test
   script:
-    - $PHP vendor/bin/behat -f junit --out reports/features
+    - php7.4 vendor/bin/behat -f junit --out reports/features
   dependencies:
     - composer
   artifacts:
