@@ -61,6 +61,12 @@ werden. Das heißt Zeit, globale Variablen, die Datenbank usw. müssen bei jedem
 
 UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
 
+**Framework**:
+- PHP: [PHPUnit](https://phpunit.de/), [behat](https://docs.behat.org/), [phpspec](http://www.phpspec.net/)
+- JS: [jasmin](https://jasmine.github.io/), [JEST](https://jestjs.io/)
+- python: [unittest](https://docs.python.org/3/library/unittest.html#module-unittest)
+- Java: [JUnit](https://junit.org)
+
 **Best Practice**: 
 - man teste immer nur die nach außen sichtbaren methoden (public API)
     _(private Methoden/Funktionen werden eh in public aufgerufen)_
@@ -72,7 +78,7 @@ UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
     _(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)_
 - der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: fooShouldReturnTheStringBarSuccessfully
     _(für den Dokumentationsaspekt)_
-- Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
+- für Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
     _(erhöht die Nachvollziehbarkeit der Tests)_
 - eine test sollte nicht länger als eine Sekunde dauern
     _(das Ausführen der Tests sollen die Entwicklung nicht behindern)_
@@ -87,6 +93,9 @@ hier kein weiterer Code ausgeführt wird.
 Als nächst größere Testeinheit gibt es die Feature testes, dass könnte zum Beispiel das Testen eines API Endpunktes sein. 
 Das heißt, hier wird gegen das gesamte System getestet. 
 
+Die gängigen Frameworks und Projekte haben eigene implementierung für Feature Test, mit der man zum Beispiel das Aufrufen eines
+REST-Endpunktes testen kann. In PHP Projekten basieren die Tests auf PHPUnit.
+
 **Best Practice**: 
 - man teste immer nur die nach außen sichtbaren methoden (public API)
     _(private Methoden/Funktionen werden eh in public aufgerufen)_
@@ -96,15 +105,22 @@ Das heißt, hier wird gegen das gesamte System getestet.
     _(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)_
 - der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: createUserShouldCreateANewUserInTheDatabaseSuccessfully
     _(für den Dokumentationsaspekt)_
-- Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
+- für Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
     _(erhöht die Nachvollziehbarkeit der Tests)_
 
 ### Integration Tests
-Integration Tests testen das gesamt system, von der GUI über den PHP Process bis zu Datenbank. Hierfür werden konkrete User
+Integration Tests testen das gesamte System, von der GUI über den PHP Process bis zur Datenbank. Hierfür werden konkrete User
 Storys vorgegeben, welche beschreiben was in der GUI geklickt wird und wie die Applikation darauf reagiert.
 
+Das führt dazu, dass man für die tests auch einen Server braucht, auf dem die zu testende Applikation lauf. Auch ist die
+Laufzeit eines Integration Tests sehr hoch, da eventuell Fixture eingespielt werden müssen.  
+
+**Framework**:
+- [Selenium](https://www.selenium.dev/)
+- [cypress.id](https://www.cypress.io/)
+
 **Best Practice**: 
-- Integration Tests sind im ideal fall konkrete User Storys 
+- Integration Tests sind im Idealfall konkrete User Storys 
 - die Tests müssen in einer isolierten Umgebung laufen und dürfen sich nicht beeinflussen 
     _(für jeden Test muss die Umgebung zurückgesetzt werden)_
 - der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: createUserShouldCreateANewUserInTheDatabaseSuccessfully
@@ -121,20 +137,20 @@ Storys vorgegeben, welche beschreiben was in der GUI geklickt wird und wie die A
 
 ### Test Driven Development (TDD)
 
- [-Red-] -> [+Green+] -> Refactor
+
+ [- Red -] -> [+ Green +] -> Refactor
 
 ### Behavior Driven Development (BDD)
 
 ## 3. Code Qualität
 
-## 3. Software Design
+## 4. Software Design
 
 ### Design Patterns 
 
-## 4. Setup phpStorm
+## 5. Setup phpStorm
 
-
-## 5. Tool Liste
+## 6. Tool Liste
 - [PHP](https://www.php.net/)
 - [Composer](https://getcomposer.org/)
 - [PHPMD](https://phpmd.org/) PHP Mess Detector
@@ -142,3 +158,4 @@ Storys vorgegeben, welche beschreiben was in der GUI geklickt wird und wie die A
 - [PHP-FIG](https://www.php-fig.org/)
 - [PHPUnit](https://phpunit.de/)
 - [behat](https://docs.behat.org/)
+- [Selenium](https://www.selenium.dev/)

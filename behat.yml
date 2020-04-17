@@ -1,0 +1,11 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      sessions:
+        default:
+          goutte: ~
+
+  suites:
+    default:
+      paths: [ '%paths.base%/tests/features' ]
+      contexts: [ Tests\Features\FeatureContext ]

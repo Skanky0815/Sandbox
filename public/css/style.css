@@ -1,0 +1,50 @@
+body {
+    font-family: Tahoma, Helvetica, Arial;
+    color: darkgray;
+    background: lightgray;
+}
+
+.container {
+    display: block;
+}
+
+.card {
+    background: white;
+    width: 480px;
+    border: 1px solid;
+    border-radius: 10px;
+    text-align: center;
+    margin: 50px auto;
+    padding: 10px;
+    box-shadow: darkgray 0 0 8px;
+}
+
+form input {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid lightgray;
+    border-bottom: 2px solid grey;
+    outline: none;
+}
+
+form input:focus {
+    border-bottom: 2px solid yellowgreen;
+    outline: none;
+}
+
+form button {
+    background: yellowgreen;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    border-bottom: 2px solid grey;
+    color: white;
+    font-size: 14px;
+    outline: none
+}
+
+form button:hover {
+    background: green;
+    cursor: pointer;
+}

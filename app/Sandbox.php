@@ -13,8 +13,8 @@ namespace Wizmo;
 
 class Sandbox
 {
-    public function run(): string
+    public function run(string $name = null): string
     {
-        return 'Hello World';
+        return 'Hello ' . ($name ?? 'World');
     }
 }
