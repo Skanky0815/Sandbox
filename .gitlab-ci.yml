@@ -12,6 +12,7 @@ stages:
 prepend:
   stage: install
   script:
+    - rm -R ./reports
     - mkdir ./reports
   tags:
     - bash
