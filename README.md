@@ -4,6 +4,20 @@
 Die ist ein kleines Sandbox-Projekt zum herumspielen mit Testing Frameworks. Neben den Testing Frameworks geht es auch 
 um die Codequalität im Projekt und die entwicklungsmethoden TDD und BDD. 
 
+- [1. Automatisiertes Testen](#1.-Automatisiertes-Testen)
+    - [UnitTests](#UnitTests)
+    - [Feature Tests](#Feature Tests)
+    - [Integration Tests](#Integration Tests)
+- [2. Testmethoden](#2.-Testmethoden)
+    - [Anti-Pattern](#Anti-Pattern)
+    - [Test Driven Development (TDD)](#Test-Driven-Development-(TDD))
+    - [Behavior Driven Development (BDD)](#Behavior-Driven-Development-(BDD))
+- [3. Code Qualität](#3.-Code-Qualität)
+- [3. Software Design](#3.-Software-Design)
+    - [Design Patterns](#Design-Patterns)
+- [4. Setup phpStorm](#4.-Setup-phpStorm)
+- [5. Tool Liste](#5.-Tool-Liste)
+
 ## 1. Automatisiertes Testen
 > Jeder Test ist besser als kein Test!
 
@@ -41,6 +55,7 @@ Automatisierte Tests werden einmal implementiert / konfiguriert und können imme
 - Tests geben das Gefühl eine Bug freie Applikation implementiert zu haben
 - man kann den Code refaktorieren oder erweitern ohne das etwas kaputtgeht
 - sobald man Tests hat, spart man Zeit bei jeder weiteren Testsitzung
+- Code der Testbar ist, ist automatisch sauberer und besser lesbar und weist eine geringere Komplexität auf
 
 **Cons:**
 - man Programmiert auch Code welcher nicht produktiv ist
@@ -51,7 +66,7 @@ Automatisierte Tests werden einmal implementiert / konfiguriert und können imme
 Ein UnitTest test immer nur eine Unit(Einheit/Module). In PHP würde man für eine Klasse eine TestKlasse erstellen und 
 dort für jede __public function__ mindestens eine test Methode implementieren.    
 Bei UnitTests ist darauf zu achten, das man auch wirklich nur die Unit testet, dazu muss immer eine feste Umgebung erschaffen
-werden. Das heißt Zeit, Globale variablen, Datenbank stände etc müssen bei jeden Test gleich sein. 
+werden. Das heißt Zeit, globale Variablen, die Datenbank usw. müssen bei jedem Testdurchlauf gleich sein. 
 
 UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
 
@@ -64,23 +79,54 @@ UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
     __(für jeden Test muss die Umgebung zurückgesetzt werden)__
 - möglichst nur ein assert je test Methode
     __(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)__
+- der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: fooShouldReturnTheStringBarSuccessfully
+    __(für den Dokumentationsaspekt)__
+- Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
+    __(erhöht die Nachvollziehbarkeit der Tests)__
+- eine test sollte nicht länger als eine Sekunde dauern
+    __(das Ausführen der Tests sollen die Entwicklung nicht behindern)__
+
+#### Mocking
+Bei einem Mock wird eine Abhängigkeit, zum Beispiel eine Klasse ganz oder teilweise durch eine Fake Klasse ersetzt, 
+damit man exakt steuern kann, welche Werte die Abhängigkeit erwartet, was sie zurückgibt, wie oft eine Methode aufgerufen wird
+oder auch ob der aufruf einer Methode eine Exception schmeißt. Zudem beschleunigt das Mocken die Ausführung der Tests, da 
+hier kein weiterer Code ausgeführt wird.
+
+### Feature Tests
+Als nächst größere Testeinheit gibt es die Feature testes, dass könnte zum Beispiel das Testen eines API Endpunktes sein. 
+Das heißt, hier wird gegen das gesamte System getestet. 
+
+**Best Practice**: 
+- man teste immer nur die nach außen sichtbaren methoden (public API)
+    __(private Methoden/Funktionen werden eh in public aufgerufen)__
+- die Tests müssen in einer isolierten Umgebung laufen und dürfen sich nicht beeinflussen 
+    __(für jeden Test muss die Umgebung zurückgesetzt werden)__
+- möglichst nur ein assert je test Methode
+    __(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)__
 - der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: createUserShouldCreateANewUserInTheDatabaseSuccessfully
     __(für den Dokumentationsaspekt)__
 - Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
     __(erhöht die Nachvollziehbarkeit der Tests)__
 
-#### Mocking
-
-### Feature Tests
-
 ### Integration Tests
+Integration Tests testen das gesamt system, von der GUI über den PHP Process bis zu Datenbank. Hierfür werden konkrete User
+Storys vorgegeben, welche beschreiben was in der GUI geklickt wird und wie die Applikation darauf reagiert.
 
+**Best Practice**: 
+- Integration Tests sind im ideal fall konkrete User Storys 
+- die Tests müssen in einer isolierten Umgebung laufen und dürfen sich nicht beeinflussen 
+    __(für jeden Test muss die Umgebung zurückgesetzt werden)__
+- der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: createUserShouldCreateANewUserInTheDatabaseSuccessfully
+    __(für den Dokumentationsaspekt)__
+- Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
+    __(erhöht die Nachvollziehbarkeit der Tests)__
+    
 ## 2. Testmethoden
 
-### Anti-Pattern
+### Anti Pattern
 
 
-Trotzdem gild, jeder Test ist ein guter Test.
+> Trotzdem gild, jeder Test ist ein guter Test.
 
 ### Test Driven Development (TDD)
 
@@ -88,9 +134,9 @@ Red -> Green -> Refactor
 
 ### Behavior Driven Development (BDD)
 
-## 3. Code Quality
+## 3. Code Qualität
 
-## Software Design
+## 3. Software Design
 
 ### Design Patterns 
 

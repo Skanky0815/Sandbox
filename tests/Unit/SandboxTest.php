@@ -11,9 +11,10 @@
 
 namespace Tests\Unit;
 
+use PHPUnit\Framework\TestCase;
 use Wizmo\Sandbox;
 
-class SandboxTest extends \PHPUnit\Framework\TestCase
+class SandboxTest extends TestCase
 {
     /** @test */
     public function runShouldEchoHelloWorldSuccessfully(): void
