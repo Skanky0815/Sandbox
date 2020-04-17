@@ -12,7 +12,6 @@ stages:
 prepend:
   stage: install
   script:
-    - rm -R ./reports
     - mkdir ./reports
   tags:
     - bash
@@ -95,8 +94,8 @@ pages:
   stage: cleanup
   script:
     - mkdir public
-    - cp ci/pages/index.html public/
     - cp reports/* public/
+    - rm -R ./reports
   artifacts:
     paths:
       - public
