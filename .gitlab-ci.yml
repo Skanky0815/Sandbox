@@ -95,7 +95,6 @@ pages:
   stage: cleanup
   script:
     - mkdir public
-    - cp ci/pages/index.html public/
     - cp reports/* public/
   artifacts:
     paths:
