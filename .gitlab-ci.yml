@@ -9,6 +9,11 @@ stages:
   - test
   - cleanup
 
+prepend:
+  stage: install
+  script:
+    - mkdir ./reports
+
 composer:
   stage: install
   script:
