@@ -1,20 +1,16 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: ricoschulz
- * Date: 16.04.20
- * Time: 21:26
- *
- * PHP version 7.2
- */
-
 namespace Wizmo;
 
 class Sandbox
 {
+    /**
+     * @param string|null $name
+     *
+     * @return string
+     */
     public function run(string $name = null): string
     {
-        return 'Hello ' . ($name ?? 'World');
+        return 'Hello ' . ($name ?: 'World');
     }
 }

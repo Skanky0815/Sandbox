@@ -1,11 +1,13 @@
 default:
   extensions:
     Behat\MinkExtension:
-      sessions:
-        default:
-          goutte: ~
+      base_url: 'http://localhost:8888'
+      goutte: ~
+      selenium2: ~
 
   suites:
     default:
       paths: [ '%paths.base%/tests/features' ]
-      contexts: [ Tests\Features\FeatureContext ]
+      contexts:
+        - Behat\MinkExtension\Context\MinkContext
+        - Tests\Features\FeatureContext

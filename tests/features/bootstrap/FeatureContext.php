@@ -2,11 +2,11 @@
 
 namespace Tests\Features;
 
+use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\MinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 
-/**
- * Defines application features from the specific context.
- */
-class FeatureContext extends MinkContext
+class FeatureContext implements Context
 {
+
 }

@@ -1,6 +1,6 @@
 <?php
-require_once ('../vendor/autoload.php');
 
+require_once('../vendor/autoload.php');
 
 $name = $_POST['name'] ?: null;
 
@@ -18,7 +18,7 @@ $sandbox = new \Wizmo\Sandbox();
 <body>
     <div class="container">
         <div class="card">
-            <h1><img src="img/wizmo_logo.jpeg" width="150"> Sandbox</h1>
+            <h1><img src="img/wizmo_logo.jpeg" width="150" alt="Logo der Wizmo GmbH"> Sandbox</h1>
 
             <p><?php echo $sandbox->run($name); ?></p>
 

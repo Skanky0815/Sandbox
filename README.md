@@ -76,7 +76,7 @@ UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
     _(für jeden Test muss die Umgebung zurückgesetzt werden)_
 - möglichst nur ein assert je test Methode
     _(wenn ein Test fehlschlägt, ist direkt ersichtlich welcher Teil funktioniert und welcher nicht)_
-- der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: fooShouldReturnTheStringBarSuccessfully
+- der Name der Testmethode sollte beschreiben was in dem Test passiert bsp: foo_ShouldReturnTheStringBar_Successfully
     _(für den Dokumentationsaspekt)_
 - für Werte auf die getestet wird dürfen keine zufälligen Werte genommen werden
     _(erhöht die Nachvollziehbarkeit der Tests)_
@@ -158,4 +158,4 @@ Laufzeit eines Integration Tests sehr hoch, da eventuell Fixture eingespielt wer
 - [PHP-FIG](https://www.php-fig.org/)
 - [PHPUnit](https://phpunit.de/)
 - [behat](https://docs.behat.org/)
-- [Selenium](https://www.selenium.dev/)
+- [Selenium](https://www.selenium.dev/) ``` $ brew install geckodriver ``` rund selenium ``` $ java -jar selenium-server-standalone-3.141.59.jar ```
