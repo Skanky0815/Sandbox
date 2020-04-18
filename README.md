@@ -51,7 +51,7 @@ Automatisierte Tests werden einmal implementiert / konfiguriert und können imme
 **Cons:**
 - man Programmiert auch Code welcher nicht produktiv ist
 - erfordert einiges an Disziplin
-- das Aufsetzen eines Projekts dauert länger
+- das Aufsetzen eines Projekts dauert etwas länger
 
 ### UnitTests
 Ein UnitTest test immer nur eine Unit(Einheit/Module). In PHP würde man für eine Klasse eine TestKlasse erstellen und 
@@ -130,19 +130,50 @@ Laufzeit eines Integration Tests sehr hoch, da eventuell Fixture eingespielt wer
     
 ## 2. Testmethoden
 
-### Anti Pattern
-
-
-> Trotzdem gild, jeder Test ist ein guter Test.
 
 ### Test Driven Development (TDD)
+Bei der Test getrieben Entwicklung schreibt man konsequent immer erst ein Test welcher [- fehlschlägt -], implementiert
+dann den Produktivcode welche dafür sorgt das der Test [+ erfolgreich durchläuft +] und refaktoriert den geschriebenen Code. 
+Anschließend wird die ganze Prozedur wiederholt, bis die gewünschte Funktionalität hergestellt ist.   
 
-
- [- Red -] -> [+ Green +] -> Refactor
+    [- Red -] -> [+ Green +] -> Refactor
+ 
+ **Pros**:
+ - man hat automatisch ein Code coverage von 100 %
+ - man schreibt nur Code welcher auch genutzt wird
+ - für jede Klasse gibt es ein test
+ - man schreibt sauberen Code
+ - man hat immer funktionierenden Code
+ - wenn man bei der Arbeit unterbrochen wird, weiß man wo man wieder einsteigen kann, denn man hat ein Teste der fehlschlägt 
 
 ### Behavior Driven Development (BDD)
+Behavior Driven Development basiert grundsätzlich auf den Prinzipien vom TDD, setzt nur globaler an und ist User Story basiert. Die User Story waren 
+für jedes Feature definiert, hier für wird die Ausgangslage beschrieben und dann die Handlungen auf der Webseite.   
+
+Das kann wie folgt aussehen:
+``` 
+Feature: Sandbox App who says Hello World
+  If i brows the site
+  As a casual user
+  I will greeted from the site after i say my name
+
+  Scenario: I say my name on the site, it greets me with Hello Rico
+    Given I am on the homepage
+    When I fill in "Name" with "Rico"
+      And I press "Senden"
+    Then I should see "Hello Rico"
+```
+
+Nachdem die User Story definiert wurde, fängt der Entwickler an den Test zu implementieren und wenn der Test fertig ist,
+wird die benötigte Funktion implementiert.
+
+**Pros**:
+- die Beschreibung des Features kann auf grund der einfachheit vom Projekt Owner oder von einem PM im Meeting mit dem Kunden erstellt werden
+- die User Stories können als automatisierte Test ausgeführt werden und dienen auch der Dokumentation
+- man kann zu jedem Zeitpunkt sagen, wie viel Prozent der Anforderungen umgesetzt wurden
 
 ## 3. Code Qualität
+
 
 ## 4. Software Design
 

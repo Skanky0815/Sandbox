@@ -4,17 +4,17 @@ Feature: Sandbox App who says Hello World
   I will greeted from the site after i say my name
 
   Scenario: The first Hello World
-    Given I am on "http://localhost:8888"
+    Given I am on the homepage
     Then I should see "Hello World"
 
   #@javascript
   Scenario: I say my name on the site, it greets me with Hello Rico
-    Given I am on "http://localhost:8888"
+    Given I am on the homepage
     When I fill in "Name" with "Rico"
       And I press "Senden"
     Then I should see "Hello Rico"
 
   Scenario: If i don't say my name, it greets whole world
-    Given I am on "http://localhost:8888"
+    Given I am on the homepage
     When I press "Senden"
     Then I should see "Hello World"

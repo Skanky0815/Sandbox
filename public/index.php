@@ -29,6 +29,8 @@ $sandbox = new \Wizmo\Sandbox();
                 <button type="submit">Senden</button>
             </form>
         </div>
+
+        <!-- div class="card message"></div -->
     </div>
 
     <script type="module" src="js/main.js"></script>

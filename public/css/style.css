@@ -14,9 +14,15 @@ body {
     border: 1px solid;
     border-radius: 10px;
     text-align: center;
-    margin: 50px auto;
+    margin: 50px auto 0 auto;
     padding: 10px;
     box-shadow: darkgray 0 0 8px;
+}
+
+.card.message {
+    margin-top: 25px;
+    width: 455px;
+    border-left: 25px solid yellowgreen;
 }
 
 form input {
