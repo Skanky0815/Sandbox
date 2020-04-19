@@ -20,7 +20,8 @@
         "overtrue/phplint": "^1.2",
         "friends-of-behat/mink-extension": "^2.4",
         "behat/mink-selenium2-driver": "^1.4",
-        "behat/mink-goutte-driver": "^1.2"
+        "behat/mink-goutte-driver": "^1.2",
+        "sebastian/phpcpd": "^5.0"
     },
     "autoload": {
         "psr-4": {
@@ -37,7 +38,8 @@
         "php-cs": "phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app",
         "php-unit": "phpunit --configuration phpunit.xml --colors=never --coverage-text",
         "php-md": "phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt",
-        "behat": "behat -f junit --out reports/features",
-        "php-lint": "phplint ./app --xml=reports/lint.xml"
+        "php-feature": "behat -f junit --out reports/features",
+        "php-lint": "phplint ./app --xml=reports/lint.xml",
+        "php-cpd": "phpcpd ./app --log-pmd=reports/phpcpd.xml"
     }
 }

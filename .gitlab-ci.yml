@@ -4,9 +4,13 @@ cache:
     - vendor/
     - reports/
 
+variables:
+  PHP_COMPOSER: 'php7.4 /usr/bin/composer'
+
 stages:
   - install
   - test
+  - codequality
   - cleanup
 
 prepend:
@@ -19,14 +23,14 @@ prepend:
 composer:
   stage: install
   script:
-    - php7.4 /usr/bin/composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - $PHP_COMPOSER install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
   tags:
     - bash
 
 lint:
   stage: test
   script:
-    - php7.4 vendor/bin/phplint ./app --xml=reports/lint.xml
+    - $PHP_COMPOSER php-lint
   dependencies:
     - composer
   artifacts:
@@ -37,9 +41,9 @@ lint:
     - bash
 
 codestyle:
-  stage: test
+  stage: codequality
   script:
-    - php7.4 vendor/bin/phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app
+    - $PHP_COMPOSER php-cs
   dependencies:
     - composer
   artifacts:
@@ -50,9 +54,9 @@ codestyle:
     - bash
 
 codequality:
-  stage: test
+  stage: codequality
   script:
-    - php7.4 vendor/bin/phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt
+    - $PHP_COMPOSER php-md
   dependencies:
     - composer
   artifacts:
@@ -62,10 +66,24 @@ codequality:
   tags:
     - bash
 
+duplicatedcode:
+  stage: codequality
+  script:
+    - $PHP_COMPOSER php-cpd
+  dependencies:
+    - composer
+  artifacts:
+    when: always
+    paths:
+      - reports
+  tags:
+    - bash
+
+
 phpunit:
   stage: test
   script:
-    - php7.4 vendor/bin/phpunit --configuration phpunit.xml --colors=never --coverage-text
+    - $PHP_COMPOSER php-unit
   dependencies:
     - composer
   artifacts:
@@ -79,7 +97,7 @@ phpunit:
 featurestest:
   stage: test
   script:
-    - php7.4 vendor/bin/behat -f junit --out reports/features
+    - $PHP_COMPOSER php-feature
   dependencies:
     - composer
   artifacts:

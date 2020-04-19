@@ -66,7 +66,7 @@ UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
 - Java: [JUnit](https://junit.org)
 
 **Best Practice**: 
-- man teste immer nur die nach außen sichtbaren methoden (public API)
+- man teste immer nur die nach außen sichtbaren Methoden (public API)
     _(private Methoden/Funktionen werden eh in public aufgerufen)_
 - alle Abhängigkeiten sollten gemockt werden
     _(ermöglicht das Steuern welche Parameter und Return Werte der Mock erhält und liefert)_
@@ -171,8 +171,8 @@ wird die benötigte Funktion implementiert.
 - die User Stories können als automatisierte Test ausgeführt werden und dienen auch der Dokumentation
 - man kann zu jedem Zeitpunkt sagen, wie viel Prozent der Anforderungen umgesetzt wurden
 
-## 3. Code Qualität
-Um eine gute Code Qualität zu erhalten, sollte man sich an folgende Punkte halten:
+## 3. Codequalität
+Um eine gute Codequalität zu erhalten, sollte man sich an folgende Punkte halten:
 **Allgemein**:
 - man sollte sich gut in die Software/Framework Dokumentation einlesen, um diese Optimal zu nutzen
 - man sollte sich an Coding Style Standards halten wie die PSR Definitionen von [PHP-FIG](https://www.php-fig.org/) in PHP
@@ -180,6 +180,7 @@ Um eine gute Code Qualität zu erhalten, sollte man sich an folgende Punkte halt
 - man sollte **kein** Code schreiben, welcher eventuell irgendwann einmal genutzt wird
 - es dürfen keine unbenutzten Variablen deklariert sein
 - es darf kein echo, print_r oder var_dump im Code existieren
+- man sollte doppelten Code vermeiden
 
 **Klassen**:
 - jede Klasse hat nur eine Aufgabe
@@ -191,10 +192,11 @@ Um eine gute Code Qualität zu erhalten, sollte man sich an folgende Punkte halt
 - jede Methode hat nur eine Aufgabe
 - Methoden sollte nicht mehr als 100 Zeilen lang sein
 - eine Methode sollte möglich wenig Parameter in der Signatur erwarten
+- eine Methode hat nur ein Rückgabe Type oder null  
 - die Codekomplexität einer Methode sollte klein gehalten werden 
 
 In PHP helfen die tools [PHPMD](https://phpmd.org/) und [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
-sich dan die gängigen Standards zu halten.
+sich dan die gängigen Standards zu halten. Für Javascript gibt es [standardjs](https://standardjs.com/).
 
 ## 4. Software Design
 
