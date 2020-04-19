@@ -10,8 +10,6 @@ um die Codequalität im Projekt und die Entwicklungsmethoden TDD und BDD.
 [[_TOC_]]
 
 ## 1. Automatisiertes Testen
-> Jeder Test ist besser als kein Test!
-
 Wenn man anfängt das Programmieren zu lernen, lernt man viel mit _try and error_. Mit der Zeit wird man aber besser
 doch meistens bleibt die Methodik _try and error_ erhalten. Man schreibt Code, geht in den Browser und testet ob das 
 implementierte funktioniert. Am Anfang geht es noch recht schnell, wird die Applikation aber größer, dann nimmt auch die
@@ -82,6 +80,8 @@ UnitTest stellen die kleinste Einheit beim automatisierten Testen dar.
     _(erhöht die Nachvollziehbarkeit der Tests)_
 - eine test sollte nicht länger als eine Sekunde dauern
     _(das Ausführen der Tests sollen die Entwicklung nicht behindern)_
+- es soll nur die eigene Logik getestet werden
+    _(also nicht die von Frameworks, der Programmiersprache)_
 
 #### Mocking
 Bei einem Mock wird eine Abhängigkeit, zum Beispiel eine Klasse ganz oder teilweise durch eine Fake Klasse ersetzt, 
@@ -130,13 +130,12 @@ Laufzeit eines Integration Tests sehr hoch, da eventuell Fixture eingespielt wer
     
 ## 2. Testmethoden
 
-
 ### Test Driven Development (TDD)
 Bei der Test getrieben Entwicklung schreibt man konsequent immer erst ein Test welcher [- fehlschlägt -], implementiert
 dann den Produktivcode welche dafür sorgt das der Test [+ erfolgreich durchläuft +] und refaktoriert den geschriebenen Code. 
 Anschließend wird die ganze Prozedur wiederholt, bis die gewünschte Funktionalität hergestellt ist.   
 
-    [- Red -] -> [+ Green +] -> Refactor
+[- Red -] -> [+ Green +] -> Refactor
  
  **Pros**:
  - man hat automatisch ein Code coverage von 100 %
@@ -147,8 +146,8 @@ Anschließend wird die ganze Prozedur wiederholt, bis die gewünschte Funktional
  - wenn man bei der Arbeit unterbrochen wird, weiß man wo man wieder einsteigen kann, denn man hat ein Teste der fehlschlägt 
 
 ### Behavior Driven Development (BDD)
-Behavior Driven Development basiert grundsätzlich auf den Prinzipien vom TDD, setzt nur globaler an und ist User Story basiert. Die User Story waren 
-für jedes Feature definiert, hier für wird die Ausgangslage beschrieben und dann die Handlungen auf der Webseite.   
+Behavior Driven Development basiert grundsätzlich auf den Prinzipien vom TDD, setzt nur globaler an und ist User Story basiert.
+Die User Stories werden für jedes Feature definiert, hier für wird die Ausgangslage beschrieben und dann die Interaktionen auf der Webseite.   
 
 Das kann wie folgt aussehen:
 ``` 
@@ -173,7 +172,29 @@ wird die benötigte Funktion implementiert.
 - man kann zu jedem Zeitpunkt sagen, wie viel Prozent der Anforderungen umgesetzt wurden
 
 ## 3. Code Qualität
+Um eine gute Code Qualität zu erhalten, sollte man sich an folgende Punkte halten:
+**Allgemein**:
+- man sollte sich gut in die Software/Framework Dokumentation einlesen, um diese Optimal zu nutzen
+- man sollte sich an Coding Style Standards halten wie die PSR Definitionen von [PHP-FIG](https://www.php-fig.org/) in PHP
+- der new Operator sollte weitestgehend vermieden werden, da dies das Mocken in Tests erschwert
+- man sollte **kein** Code schreiben, welcher eventuell irgendwann einmal genutzt wird
+- es dürfen keine unbenutzten Variablen deklariert sein
+- es darf kein echo, print_r oder var_dump im Code existieren
 
+**Klassen**:
+- jede Klasse hat nur eine Aufgabe
+- Klassen sollten so wenig wie möglich Abhängigkeiten zu anderen Klassen haben aber maximal 10
+- Klassen sollten möglichst wenig öffentliche Methoden oder Parameter haben
+- Klassen sollten nicht mehr als 1000 Zeilen lang sein
+
+**Methoden/Funktionen**:
+- jede Methode hat nur eine Aufgabe
+- Methoden sollte nicht mehr als 100 Zeilen lang sein
+- eine Methode sollte möglich wenig Parameter in der Signatur erwarten
+- die Codekomplexität einer Methode sollte klein gehalten werden 
+
+In PHP helfen die tools [PHPMD](https://phpmd.org/) und [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+sich dan die gängigen Standards zu halten.
 
 ## 4. Software Design
 
