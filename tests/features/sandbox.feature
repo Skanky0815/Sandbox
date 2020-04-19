@@ -7,7 +7,7 @@ Feature: Sandbox App who says Hello World
     Given I am on the homepage
     Then I should see "Hello World"
 
-  #@javascript
+  @javascript
   Scenario: I say my name on the site, it greets me with Hello Rico
     Given I am on the homepage
     When I fill in "Name" with "Rico"
