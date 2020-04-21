@@ -97,7 +97,7 @@ phpunit:
 pages:
   stage: cleanup
   script:
-    - mkdir public
+    - mkdir -p public
     - cp -r reports/* public/
   artifacts:
     paths:
