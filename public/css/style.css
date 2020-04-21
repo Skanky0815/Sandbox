@@ -20,9 +20,9 @@ body {
 }
 
 .card.message {
-    margin-top: 25px;
-    width: 455px;
-    border-left: 25px solid yellowgreen;
+    margin-top: 15px;
+    width: 465px;
+    border-left: 15px solid yellowgreen;
 }
 
 form input {

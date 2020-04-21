@@ -94,20 +94,6 @@ phpunit:
   tags:
     - bash
 
-featurestest:
-  stage: test
-  script:
-    - $PHP_COMPOSER php-feature
-  dependencies:
-    - composer
-  artifacts:
-    paths:
-      - reports
-    reports:
-      junit: reports/features/default.xml
-  tags:
-    - bash
-
 pages:
   stage: cleanup
   script:

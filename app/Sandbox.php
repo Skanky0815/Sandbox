@@ -11,6 +11,6 @@ class Sandbox
      */
     public function run(string $name = null): string
     {
-        return 'Hello ' . ($name ?: 'World');
+        return 'Hello ' . ($name ?? 'World');
     }
 }
