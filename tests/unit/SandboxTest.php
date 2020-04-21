@@ -8,7 +8,7 @@ use Wizmo\Sandbox;
 class SandboxTest extends TestCase
 {
     /** @test */
-    public function runShouldReturnHelloWorldSuccessfully(): void
+    public function runShouldWithoutAParameterAndReturnTheDefaultSuccessfully(): void
     {
         $sandbox = new Sandbox();
 
@@ -18,7 +18,7 @@ class SandboxTest extends TestCase
     }
 
     /** @test */
-    public function runShouldReturnHelloNameSuccessfully(): void
+    public function runShouldWithAParameterReturnAModifiedStringSuccessfully(): void
     {
         $sandbox = new Sandbox();
 
