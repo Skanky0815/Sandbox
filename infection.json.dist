@@ -1,0 +1,15 @@
+{
+    "source": {
+        "directories": [
+            "app"
+        ]
+    },
+    "logs": {
+        "text": "reports/infection.log"
+    },
+    "testFramework": "phpunit",
+    "initialTestsPhpOptions": "-d zend_extension=xdebug.so",
+    "mutators": {
+        "@default": true
+    }
+}

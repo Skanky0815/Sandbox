@@ -4,6 +4,7 @@
   "description": "A sandbox to play with php and a lot of nice tools to become a better programmer.",
   "private": true,
   "scripts": {
+    "test": "jasmine",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {
@@ -16,8 +17,7 @@
     "axios": "^0.19.2"
   },
   "devDependencies": {
-    "jest": "^25.3.0",
-    "jest-webpack": "^0.5.1",
+    "jasmine": "^3.5.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   }

@@ -11,14 +11,32 @@ const createEntry = (greeting) => {
     container.appendChild(entity)
 }
 
+const showMessage = (message) => {
+    const error = document.createElement('p')
+    error.setAttribute('class', 'error-message')
+    error.innerText = message
+
+    form.appendChild(error)
+}
+
 export default {
     run(axios) {
         form.onsubmit = (event) => {
             event.preventDefault();
-            axios.post('', {name: input.value}).then(({ data }) => {
-                createEntry(data.greeting)
-                input.value = null
-            })
+
+            const errors = document.getElementsByClassName('error-message')
+            for (const error of errors) {
+                form.removeChild(error)
+            }
+
+            axios.post('', {name: input.value})
+              .then(({ data }) => {
+                    createEntry(data.greeting)
+                    input.value = null
+                })
+              .catch(({response}) => {
+                    showMessage(response.data.message)
+                })
         }
     }
 }

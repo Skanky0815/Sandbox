@@ -22,7 +22,9 @@
         "friends-of-behat/mink-extension": "^2.4",
         "behat/mink-selenium2-driver": "^1.4",
         "behat/mink-goutte-driver": "^1.2",
-        "sebastian/phpcpd": "^5.0"
+        "sebastian/phpcpd": "^5.0",
+        "vimeo/psalm": "^3.11",
+        "infection/infection": "^0.16.3"
     },
     "autoload": {
         "psr-4": {
@@ -38,9 +40,11 @@
     "scripts": {
         "php-cs": "phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app",
         "php-unit": "phpunit --configuration phpunit.xml --colors=never --coverage-text",
-        "php-md": "phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt",
+        "php-md": "phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt  --ignore-violations-on-exit",
         "php-feature": "behat -f junit --out reports/features",
         "php-lint": "phplint ./app --xml=reports/lint.xml",
-        "php-cpd": "phpcpd ./app --log-pmd=reports/phpcpd.xml"
+        "php-cpd": "phpcpd ./app --log-pmd=reports/phpcpd.xml",
+        "php-psalm": "psalm",
+        "infection": "infection"
     }
 }

@@ -200,6 +200,24 @@ sich dan die gängigen Standards zu halten. Für Javascript gibt es [standardjs]
 
 ## 4. Software Design
 
+SOLID:
+
+**S**: Single-Responsibility-Prinzip
+Das Single-Responsibility-Prinzip besagt, dass jede Klasse nur eine einzige Verantwortung haben solle.
+
+**O**: Open-Closed-Prinzip
+Das Open-Closed-Prinzip besagt, dass Software-Einheiten (hier Module, Klassen, Methoden usw.) Erweiterungen möglich machen sollen (dafür offen sein), aber ohne dabei ihr Verhalten zu ändern (ihr Sourcecode und ihre Schnittstelle sollte sich nicht ändern).
+
+**L**: Liskovsches Substitutionsprinzip
+Das Liskovsche Substitutionsprinzip (LSP) oder Ersetzbarkeitsprinzip fordert, dass eine Instanz einer abgeleiteten Klasse sich so verhalten muss, dass jemand, der meint, ein Objekt der Basisklasse vor sich zu haben, nicht durch unerwartetes Verhalten überrascht wird, wenn es sich dabei tatsächlich um ein Objekt eines Subtyps handelt. 
+
+**I**: Interface-Segregation-Prinzip
+Das Interface-Segregation-Prinzip dient dazu, zu große Interfaces aufzuteilen. Die Aufteilung soll gemäß den Anforderungen der Clients an die Interfaces gemacht werden – und zwar derart, dass die neuen Interfaces genau auf die Anforderungen der einzelnen Clients passen.
+
+**D**: Dependency-Inversion-Prinzip
+Das Dependency-Inversion-Prinzip beschäftigt sich mit der Reduktion der Kopplung von Modulen. Es besagt, dass Abhängigkeiten immer von konkreteren Modulen niedriger Ebenen zu abstrakten Modulen höherer Ebenen gerichtet sein sollten.
+
+
 ### Design Patterns 
 
 ## 5. Setup phpStorm

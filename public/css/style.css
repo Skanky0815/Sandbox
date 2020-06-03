@@ -5,23 +5,31 @@ body {
 }
 
 .container {
-    display: block;
+    width: 640px;
+    margin: 0 auto;
+    display: grid;
+    column-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+    justify-content: center;
 }
 
 .card {
     background: white;
-    width: 480px;
     border: 1px solid;
     border-radius: 10px;
     text-align: center;
-    margin: 50px auto 0 auto;
     padding: 10px;
     box-shadow: darkgray 0 0 8px;
 }
 
+.col3 {
+    grid-column: 1 / 4;
+}
+
 .card.message {
-    margin-top: 15px;
-    width: 465px;
     border-left: 15px solid yellowgreen;
 }
 
@@ -53,4 +61,11 @@ form button {
 form button:hover {
     background: green;
     cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-style: italic;
+    margin-top: 5px;
+    font-size: small;
 }

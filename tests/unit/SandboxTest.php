@@ -17,13 +17,34 @@ class SandboxTest extends TestCase
         $this->assertEquals('Hello World', $result);
     }
 
-    /** @test */
-    public function runShouldWithAParameterReturnAModifiedStringSuccessfully(): void
+    /**
+     * @test
+     * @dataProvider nameProvider
+     *
+     * @param string $name
+     * @param string $expected
+     *
+     * @return void
+     */
+    public function runShouldWithAParameterReturnAModifiedStringSuccessfully(string $name, string $expected): void
     {
         $sandbox = new Sandbox();
 
-        $result = $sandbox->run('Name');
+        $result = $sandbox->run($name);
 
-        $this->assertEquals('Hello Name', $result);
+        $this->assertSame($expected, $result);
+    }
+
+    /**
+     * @return array|string[][]
+     */
+    public function nameProvider(): array
+    {
+        return [
+            'Hello Gerrick' => ['Gerrick', 'Hello Gerrick'],
+            'Hello Thomas' => ['Thomas', 'Hello Thomas'],
+            'Hello Rico' => ['Rico', 'Hello Rico'],
+            'Hello Basti' => ['Basti', 'Hello Basti'],
+        ];
     }
 }
