@@ -4,9 +4,6 @@ cache:
     - vendor/
     - reports/
 
-variables:
-  PHP_COMPOSER: 'php7.4 /usr/bin/composer'
-
 stages:
   - install
   - test
@@ -23,14 +20,14 @@ prepend:
 composer:
   stage: install
   script:
-    - $PHP_COMPOSER install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - php7.4 /usr/bin/composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
   tags:
     - bash
 
 lint:
   stage: test
   script:
-    - $PHP_COMPOSER php-lint
+    - php7.4 /usr/bin/composer php-lint
   dependencies:
     - composer
   artifacts:
@@ -43,7 +40,7 @@ lint:
 codestyle:
   stage: codequality
   script:
-    - $PHP_COMPOSER php-cs
+    - php7.4 /usr/bin/composer php-cs
   dependencies:
     - composer
   artifacts:
@@ -56,7 +53,7 @@ codestyle:
 codequality:
   stage: codequality
   script:
-    - $PHP_COMPOSER php-md
+    - php7.4 /usr/bin/composer php-md
   dependencies:
     - composer
   artifacts:
@@ -69,7 +66,7 @@ codequality:
 duplicatedcode:
   stage: codequality
   script:
-    - $PHP_COMPOSER php-cpd
+    - php7.4 /usr/bin/composer php-cpd
   dependencies:
     - composer
   artifacts:
@@ -83,7 +80,7 @@ duplicatedcode:
 phpunit:
   stage: test
   script:
-    - $PHP_COMPOSER php-unit
+    - php7.4 /usr/bin/composer php-unit
   dependencies:
     - composer
   artifacts:
