@@ -1,13 +1,6 @@
-# Wizmo Sandbox Projekt
-[logo]: https://www.wizmo.de/media/show/26/logo/0/media_26.png "Wizmo GmbH"
-
-[![pipeline status](https://gitlab.dc2.wizmo.cloud/rschulz/sandbox/badges/master/pipeline.svg)](https://gitlab.dc2.wizmo.cloud/rschulz/sandbox/-/commits/master)
-[![coverage report](https://gitlab.dc2.wizmo.cloud/rschulz/sandbox/badges/master/coverage.svg)](https://gitlab.dc2.wizmo.cloud/rschulz/sandbox/-/commits/master)
-
+# Sandbox Projekt
 Die ist ein kleines Sandbox-Projekt zum herumspielen mit Testing Frameworks. Neben den Testing Frameworks geht es auch 
 um die Codequalität im Projekt und die Entwicklungsmethoden TDD und BDD. 
-
-[[_TOC_]]
 
 ## 1. Automatisiertes Testen
 Wenn man anfängt das Programmieren zu lernen, lernt man viel mit _try and error_. Mit der Zeit wird man aber besser
