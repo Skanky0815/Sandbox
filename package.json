@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.dc2.wizmo.cloud/rschulz/sandbox.git"
+    "url": "https://github.com/Skanky0815/Sandbox.git"
   },
-  "author": "rico.schulz@wizmo.de",
+  "author": "rico-schulz@wizmo.de",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "jasmine": "^3.5.0",

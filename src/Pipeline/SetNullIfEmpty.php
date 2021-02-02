@@ -1,17 +1,10 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: ricoschulz
- * Date: 01.05.20
- * Time: 00:32
- *
- * PHP version 7.2
- */
+declare(strict_types=1);
 
-namespace Wizmo\Pipeline;
+namespace App\Pipeline;
 
-use Wizmo\Request;
+use App\Request;
 
 class SetNullIfEmpty
 {

@@ -1,15 +1,8 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: ricoschulz
- * Date: 30.04.20
- * Time: 23:55
- *
- * PHP version 7.2
- */
+declare(strict_types=1);
 
-namespace Wizmo;
+namespace App;
 
 class Pipeline
 {
@@ -28,12 +21,7 @@ class Pipeline
         $this->layers = $layers;
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @return mixed
-     */
-    public function process($value)
+    public function process(mixed $value): mixed
     {
         foreach ($this->layers as $layer) {
             /** @var mixed $value */

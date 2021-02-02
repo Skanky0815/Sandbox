@@ -1,17 +1,10 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: ricoschulz
- * Date: 04.06.20
- * Time: 01:24
- *
- * PHP version 7.2
- */
+declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use Wizmo\FizzBuzz;
+use App\FizzBuzz;
 use PHPUnit\Framework\TestCase;
 
 /*

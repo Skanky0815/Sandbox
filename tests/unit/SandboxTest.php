@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
+use App\Sandbox;
 use PHPUnit\Framework\TestCase;
-use Wizmo\Sandbox;
 
 class SandboxTest extends TestCase
 {
@@ -36,7 +38,7 @@ class SandboxTest extends TestCase
     }
 
     /**
-     * @return array|string[][]
+     * @return array<string, array<string>>
      */
     public function nameProvider(): array
     {

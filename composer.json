@@ -1,20 +1,20 @@
 {
-    "name": "wizmo/sandbox",
+    "name": "skanky0815/sandbox",
     "description": "A sandbox to play with php and a lot of nice tools to become a better programmer.",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {
             "name": "Rico Schulz",
-            "email": "rico.schulz@wizmo.com"
+            "email": "rico-schulz@web.de"
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "ext-json": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8",
+        "phpunit/phpunit": "^9",
         "phpmd/phpmd": "^2.8",
         "squizlabs/php_codesniffer": "^3.5",
         "behat/behat": "^3.6",
@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Wizmo\\": "app/"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
@@ -38,12 +38,12 @@
         }
     },
     "scripts": {
-        "php-cs": "phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app",
+        "php-cs": "phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml src",
         "php-unit": "phpunit --configuration phpunit.xml --colors=never --coverage-text",
-        "php-md": "phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt  --ignore-violations-on-exit",
+        "php-md": "phpmd ./src text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt  --ignore-violations-on-exit",
         "php-feature": "behat -f junit --out reports/features",
-        "php-lint": "phplint ./app --xml=reports/lint.xml",
-        "php-cpd": "phpcpd ./app --log-pmd=reports/phpcpd.xml",
+        "php-lint": "phplint ./src --xml=reports/lint.xml",
+        "php-cpd": "phpcpd ./src --log-pmd=reports/phpcpd.xml",
         "php-psalm": "psalm",
         "infection": "infection"
     }

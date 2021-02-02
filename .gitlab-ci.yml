@@ -27,7 +27,7 @@ composer:
 lint:
   stage: test
   script:
-    - php7.4 vendor/bin/phplint ./app --xml=reports/lint.xml
+    - php7.4 vendor/bin/phplint ./src --xml=reports/lint.xml
   dependencies:
     - composer
   artifacts:
@@ -40,7 +40,7 @@ lint:
 codestyle:
   stage: codequality
   script:
-    - php7.4 vendor/bin/phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./app
+    - php7.4 vendor/bin/phpcs -p --standard=PSR12 --report=junit --report-file=reports/checkstyle.xml ./src
   dependencies:
     - composer
   artifacts:
@@ -53,7 +53,7 @@ codestyle:
 codequality:
   stage: codequality
   script:
-    - php7.4 vendor/bin/phpmd ./app text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt  --ignore-violations-on-exit
+    - php7.4 vendor/bin/phpmd ./src text cleancode,codesize,controversial,design,naming,unusedcode --reportfile reports/phpmd.txt  --ignore-violations-on-exit
   dependencies:
     - composer
   artifacts:
@@ -66,7 +66,7 @@ codequality:
 duplicatedcode:
   stage: codequality
   script:
-    - php7.4 vendor/bin/phpcpd ./app --log-pmd=reports/phpcpd.xml
+    - php7.4 vendor/bin/phpcpd ./src --log-pmd=reports/phpcpd.xml
   dependencies:
     - composer
   artifacts:
